@@ -6,18 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'photography-app';
-  isPhotoVisible = false;
+  
 
-  onUserClick() {
-    alert('Button clicked!');
-  }
-
-  onAddPhoto() {
-    this.isPhotoVisible = true;
-    
-
-    
-
-  }
+ 
 }
