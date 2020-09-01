@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'photography-app';
+  isPhotoVisible = false;
+
+  onUserClick() {
+    alert('Button clicked!');
+  }
+
+  onAddPhoto() {
+    this.isPhotoVisible = true;
+    
+
+    
+
+  }
 }
