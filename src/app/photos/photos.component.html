@@ -1,1 +1,14 @@
-photos
+<!-- Header -->
+<div style="text-align:center;font-size:20px; font-weight:bold;">Photos</div>
+<!-- Loader -->
+<div *ngIf="isLoading" style="text-align:center;background:#eaeaea; margin:3rem;padding:2rem;"> Loading Photos ...</div>
+<!-- Photos -->
+<div *ngFor="let item of items" style="min-width:10rem;height:15rem;background:#eaeaea;margin:0.5rem;">
+
+  <img style="padding:1rem;" [src]="item.thumbnailUrl" />
+  <div style="padding:1rem;">
+    Photo ID : {{item.id}}
+    <br />
+    Photo Title :  {{item.title}}
+  </div>
+</div>
