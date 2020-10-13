@@ -18,7 +18,7 @@ export class PhotosComponent implements OnInit {
 
 
   ngOnInit() { 
-    let url = 'https://jsonplaceholder.typicode.com/photos';
+    let url = 'http://localhost:1234/photos';
     this._httpClient.get(url)
       .subscribe((res: any) => {
         this.items = res;

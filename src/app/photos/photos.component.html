@@ -3,12 +3,26 @@
 <!-- Loader -->
 <div *ngIf="isLoading" style="text-align:center;background:#eaeaea; margin:3rem;padding:2rem;"> Loading Photos ...</div>
 <!-- Photos -->
-<div *ngFor="let item of items" style="min-width:10rem;height:15rem;background:#eaeaea;margin:0.5rem;">
 
-  <img style="padding:1rem;" [src]="item.thumbnailUrl" />
-  <div style="padding:1rem;">
-    Photo ID : {{item.id}}
-    <br />
-    Photo Title :  {{item.title}}
+<div class="row">
+
+
+
+
+
+  <div *ngFor="let item of items" style="height:15rem;" class="col-sm-6">
+    <div style="background:#eaeaea;padding:1rem;">
+      <img style="width:10rem;" [src]="item.thumbnailUrl" />
+      <div style="">
+        <p style="font-weight:bold">Title :  {{item.title}}</p> 
+         
+        <p style="color:#888;">ID : {{item.id}}</p> 
+      </div>
+
+
+    </div>
+   
   </div>
+
 </div>
+
