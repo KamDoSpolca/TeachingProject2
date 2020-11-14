@@ -4,7 +4,7 @@ const app = express();
 
 const port = 1234;
 const mongoose = require('mongoose');
-const photosRoutes = require('./routes/photos');
+const photosRouter = require('./routes/photosRouter');
 // connection string password is found elsewhere ( and is fake to prevent anyone to connect to my DB )
 const connString = `mongodb+srv://dbUser:${process.env.MONGO_DB_PASSWORD}@cluster0.rsg6u.mongodb.net/softwareDev?retryWrites=true&w=majority`;
 // Use CORS Policy
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
     
 // Photos routes uses own router
-app.use('/photos', photosRoutes);
+app.use('/photos', photosRouter);
 
 
 app.listen(port, () => {
