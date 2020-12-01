@@ -25,6 +25,7 @@ exports.getDbPhotos = (req, res, next) => {
     })
 }
 
+
 exports.savePhoto = (req, res, next) => {
 
   const fotecka = new Photo({
