@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
 
 const port = 1234;
 const mongoose = require('mongoose');
@@ -9,7 +10,8 @@ const photosRouter = require('./routes/photosRouter');
 const connString = `mongodb+srv://dbUser:${process.env.MONGO_DB_PASSWORD}@cluster0.rsg6u.mongodb.net/softwareDev?retryWrites=true&w=majority`;
 // Use CORS Policy
 app.use(cors());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(connString, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
   .then(() => {
