@@ -2,6 +2,32 @@
 <div style="text-align:center;font-size:20px; font-weight:bold;">Photos</div>
 <!-- Loader -->
 <div *ngIf="isLoading" style="text-align:center;background:#eaeaea; margin:3rem;padding:2rem;"> Loading Photos ...</div>
+
+
+
+
+
+<!--Form-->
+<div class="row col-sm-12" style="margin-left:2rem;margin-bottom:2rem;">
+
+  <form [formGroup]="testForm">
+    <label>Title</label>
+    <input class="form-control" formControlName="title" />
+
+    <label>Photo Url</label>
+    <input class="form-control" formControlName="url" />
+
+    <button type="submit" (click)="onSubmit()"> Odoslat </button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
 <!-- Photos -->
 
 <div class="row">
@@ -25,7 +51,7 @@
   </div>
 
   <div class="row col-sm-12" style="display:inline-block;text-align:center;padding:2rem;">    
-      <button (click)="onSave()">Add Photo</button>   
+     
       <button (click)="onUpdate()">Update Photo</button>   
       <button (click)="onDelete()">Delete Photo</button>    
   </div>

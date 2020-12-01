@@ -28,21 +28,23 @@ exports.getDbPhotos = (req, res, next) => {
 
 exports.savePhoto = (req, res, next) => {
 
+  console.log(req.body);
+
   const fotecka = new Photo({
-    title: 'sobotne rano',
+    title: 'sobotne rano', 
     url: 'https://post.greatist.com/wp-content/uploads/sites/3/2020/02/325466_1100-1100x628.jpg'
   });
 
-  fotecka.save().then(response => {
-    res.status(200).json({
-      message: 'created successfully'
-    })
-  })
-    .catch(error => {
-      res.status(500).json({
-        message: 'an error occured'
-      })
-    });
+  //fotecka.save().then(response => {
+  //  res.status(200).json({
+  //    message: 'created successfully'
+  //  })
+  //})
+  //  .catch(error => {
+  //    res.status(500).json({
+  //      message: 'an error occured'
+  //    })
+  //  });
 }
 
 exports.updatePhoto = (req, res, next) => {
