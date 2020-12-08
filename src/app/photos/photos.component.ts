@@ -32,10 +32,10 @@ export class PhotosComponent implements OnInit {
 
 
 
-    let url = 'http://localhost:1234/photos/fake';
+    let url = 'http://localhost:1234/photos/get-all';
     this._httpClient.get(url)
       .subscribe((res: any) => {
-        this.items = res;
+        this.items = res.data;
         this.isLoading = false;
       })
   }
