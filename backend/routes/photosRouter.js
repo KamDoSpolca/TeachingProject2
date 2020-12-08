@@ -8,6 +8,6 @@ router.get('/fake', PhotosController.getAllPhotos);
 
 router.post('/save-one', PhotosController.savePhoto);
 router.put('/update-one', PhotosController.updatePhoto);
-router.delete('/delete-one', PhotosController.deletePhoto);
+router.delete('/delete-one/:id', PhotosController.deletePhoto);
 
 module.exports = router;

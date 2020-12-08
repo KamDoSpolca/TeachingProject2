@@ -71,8 +71,7 @@ exports.updatePhoto = (req, res, next) => {
 
 exports.deletePhoto = (req, res, next) => {
   // Put here your own database item ID
-  const deleteId = '5faff0476a57fd5dcc47bfeb';
-
+  const deleteId = req.params.id;
   Photo.deleteOne({ _id: deleteId }).
     then(response => {
       res.status(200).json({

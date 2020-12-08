@@ -42,7 +42,9 @@
       <div style="">
         <p style="font-weight:bold">Title :  {{item.title}}</p> 
          
-        <p style="color:#888;">ID : {{item._id}}</p> 
+        <p style="color:#888;">ID : {{item._id}}</p>
+
+        <button (click)="onDelete(item._id)">Delete</button>
       </div>
 
 

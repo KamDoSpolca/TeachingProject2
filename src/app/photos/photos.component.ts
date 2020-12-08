@@ -49,9 +49,9 @@ export class PhotosComponent implements OnInit {
       });
   }
 
-  onDelete() {
-    let url = 'http://localhost:1234/photos/delete-one';
-    this._httpClient.delete(url).
+  onDelete(id) {
+    let url = 'http://localhost:1234/photos/delete-one/' + id;
+        this._httpClient.delete(url).
       subscribe((res: any) => {
         alert(res.message)
       });
