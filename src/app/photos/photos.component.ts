@@ -13,8 +13,9 @@ export class PhotosComponent implements OnInit {
 
   items = [];
   isLoading = true;
-
-  testForm: FormGroup
+  isUpdate = false;
+  helpfulEditId = '';
+  testForm: FormGroup;
 
   constructor(
     private _httpClient: HttpClient,
@@ -28,7 +29,7 @@ export class PhotosComponent implements OnInit {
       title: new FormControl(null),
       url: new FormControl(null)
     })
-
+    
 
 
 
@@ -41,9 +42,13 @@ export class PhotosComponent implements OnInit {
   }
 
 
-  onUpdate() {
-    let url = 'http://localhost:1234/photos/update-one';
-    this._httpClient.put(url, null).
+  onUpdate(id) {
+
+    const photoTitle = this.testForm.value.title;
+    const photoUrl = this.testForm.value.url;
+
+    let url = `http://localhost:1234/photos/update-one/${id}`;
+    this._httpClient.put(url, { photoUrl, photoTitle }).
       subscribe((res: any) => {
         alert(res.message)
       });
@@ -77,7 +82,12 @@ export class PhotosComponent implements OnInit {
 
   }
 
-
+  onEdit(item) {
+    this.testForm.get('title').setValue(item.title);
+    this.testForm.get('url').setValue(item.url);
+    this.isUpdate = true;
+    this.helpfulEditId = item._id;
+  }
 
 
 

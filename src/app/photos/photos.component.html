@@ -17,7 +17,9 @@
     <label>Photo Url</label>
     <input class="form-control" formControlName="url" />
 
-    <button type="submit" (click)="onSubmit()"> Odoslat </button>
+    <button type="submit" (click)="onSubmit()"> Create </button>
+
+    <button *ngIf="isUpdate" type="submit" (click)="onUpdate(helpfulEditId)"> Update </button>
   </form>
 </div>
 
@@ -38,24 +40,25 @@
 
   <div *ngFor="let item of items" style="height:15rem;" class="col-sm-6">
     <div style="background:#eaeaea;padding:1rem;">
-      <img style="width:10rem;" [src]="item.thumbnailUrl" />
+      <img style="width:10rem;" [src]="item.url" />
       <div style="">
-        <p style="font-weight:bold">Title :  {{item.title}}</p> 
-         
+        <p style="font-weight:bold">Title :  {{item.title}}</p>
+
         <p style="color:#888;">ID : {{item._id}}</p>
 
         <button (click)="onDelete(item._id)">Delete</button>
-      </div>
 
+
+        <button type="submit" (click)="onEdit(item)"> Update </button>
+
+      </div>
 
     </div>
    
   </div>
 
   <div class="row col-sm-12" style="display:inline-block;text-align:center;padding:2rem;">    
-     
-      <button (click)="onUpdate()">Update Photo</button>   
-      <button (click)="onDelete()">Delete Photo</button>    
+      
   </div>
 </div>
 

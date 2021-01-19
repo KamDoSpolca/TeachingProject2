@@ -28,10 +28,10 @@ exports.getDbPhotos = (req, res, next) => {
 
 exports.savePhoto = (req, res, next) => {
 
-  
+
 
   const fotecka = new Photo({
-    title: req.body.photoTitle, 
+    title: req.body.photoTitle,
     url: req.body.photoUrl
   });
   console.log("sluchatka")
@@ -49,25 +49,29 @@ exports.savePhoto = (req, res, next) => {
 
 exports.updatePhoto = (req, res, next) => {
   // Put here your own database item ID
-  const updateId = '5fafee470217895c944e2800';
+  const updateId = req.params.id;
+  const updateTitle = req.body.photoTitle;
+  const updateUrl = req.body.photoUrl;
+  
+
   const fotecka = new Photo({
     _id: updateId,
-    title: 'nedelne rano',
-    url: 'https://myocn.net/wp-content/uploads/2013/05/inexpressible_joy-1.jpg'
+    title: updateTitle,
+    url: updateUrl
   });
 
-  Photo.updateOne({ _id: updateId, }, fotecka)
+  Photo.updateOne({ _id: updateId }, fotecka)
     .then(response => {
       res.status(200).json({
         message: 'updated successfully'
-      })
+      });
     })
     .catch(error => {
       res.status(500).json({
         message: 'an error occured'
-      })
-    })
-}
+      });
+    });
+};
 
 exports.deletePhoto = (req, res, next) => {
   // Put here your own database item ID
@@ -82,5 +86,5 @@ exports.deletePhoto = (req, res, next) => {
       res.status(500).json({
         message: 'an error occured'
       })
-    })  
+    })
 }
