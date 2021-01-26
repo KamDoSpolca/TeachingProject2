@@ -50,7 +50,8 @@ export class PhotosComponent implements OnInit {
     let url = `http://localhost:1234/photos/update-one/${id}`;
     this._httpClient.put(url, { photoUrl, photoTitle }).
       subscribe((res: any) => {
-        alert(res.message)
+        alert(res.message);
+        this.onCancel();
       });
   }
 
@@ -62,7 +63,14 @@ export class PhotosComponent implements OnInit {
       });
   }
 
+  onCancel() {
+    this.testForm = this._formBuilder.group({
+      title: new FormControl(null),
+      url: new FormControl(null)
+    });
+    this.isUpdate = false;
 
+  }
 
 
 

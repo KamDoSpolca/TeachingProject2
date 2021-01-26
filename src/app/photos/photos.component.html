@@ -17,12 +17,18 @@
     <label>Photo Url</label>
     <input class="form-control" formControlName="url" />
 
-    <button type="submit" (click)="onSubmit()"> Create </button>
+    <button *ngIf="!isUpdate" type="submit" (click)="onSubmit()"> Create </button>
 
     <button *ngIf="isUpdate" type="submit" (click)="onUpdate(helpfulEditId)"> Update </button>
+
+    <button *ngIf="isUpdate" (click)="onCancel()"> X </button>
+
   </form>
 </div>
 
+
+<!--ToDo: po kliknuti na button update pri obrazku automaticky scroll hore, -->
+<!--ToDo: velkost fotky, rovnake zarovanie na kazdu fotku -->
 
 
 
@@ -54,11 +60,11 @@
       </div>
 
     </div>
-   
+
   </div>
 
-  <div class="row col-sm-12" style="display:inline-block;text-align:center;padding:2rem;">    
-      
+  <div class="row col-sm-12" style="display:inline-block;text-align:center;padding:2rem;">
+
   </div>
 </div>
 
