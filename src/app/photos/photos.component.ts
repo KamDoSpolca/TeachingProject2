@@ -16,6 +16,7 @@ export class PhotosComponent implements OnInit {
   isUpdate = false;
   helpfulEditId = '';
   testForm: FormGroup;
+  isError = false;
 
   constructor(
     private _httpClient: HttpClient,
@@ -25,11 +26,9 @@ export class PhotosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.testForm = this._formBuilder.group({
-      title: new FormControl(null),
-      url: new FormControl(null)
-    })
-    
+    this.initForm();
+
+
 
 
 
@@ -38,9 +37,20 @@ export class PhotosComponent implements OnInit {
       .subscribe((res: any) => {
         this.items = res.data;
         this.isLoading = false;
+      }, error => {
+          this.isLoading = false;
+          this.isError = true;
       })
   }
 
+  initForm() {
+
+    this.testForm = this._formBuilder.group({
+      title: new FormControl(null),
+      url: new FormControl(null)
+    })
+
+  }
 
   onUpdate(id) {
 
@@ -64,15 +74,13 @@ export class PhotosComponent implements OnInit {
   }
 
   onCancel() {
-    this.testForm = this._formBuilder.group({
-      title: new FormControl(null),
-      url: new FormControl(null)
-    });
+
     this.isUpdate = false;
+    this.initForm();
 
   }
 
-
+  
 
   onSubmit() {
 
@@ -95,6 +103,8 @@ export class PhotosComponent implements OnInit {
     this.testForm.get('url').setValue(item.url);
     this.isUpdate = true;
     this.helpfulEditId = item._id;
+    window.scroll(0,0)
+
   }
 
 
