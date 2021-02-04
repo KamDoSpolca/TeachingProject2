@@ -4,11 +4,14 @@
   padding: 1rem;
   cursor: pointer;
   transition: 0.3s;
-  border-radius:10px;
+  font-family:'LibreBaskerville-Regular';
+  text-transform:uppercase;
+  letter-spacing:0.3rem;
+  font-size:1rem;
 }
 
 .menu--item:hover {
-  background:#cccccc;
+  border-bottom:1px solid black;
   transition: 0.3s;
 }
 
@@ -34,7 +37,7 @@ padding:0;
   left: 2rem;
   list-style-type: none;
   font-family: 'Brush Script MT', cursive;
-  font-size:2rem
+  font-size:2rem;
 }
 
 .logo:hover {
