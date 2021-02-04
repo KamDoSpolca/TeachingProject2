@@ -29,3 +29,14 @@
 padding:0;
 }
 
+.logo {
+  position: absolute;
+  left: 2rem;
+  list-style-type: none;
+  font-family: 'Brush Script MT', cursive;
+  font-size:2rem
+}
+
+.logo:hover {
+    cursor: pointer;
+}
