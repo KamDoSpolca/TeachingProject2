@@ -107,6 +107,11 @@ export class PhotosComponent implements OnInit {
 
   }
 
+  onRightArrow() {
+    document.getElementById("slider").scrollLeft += 1000;
+  }
 
-
+  onLeftArrow() {
+    document.getElementById("slider").scrollLeft -= 1000; 
+  }
 }
