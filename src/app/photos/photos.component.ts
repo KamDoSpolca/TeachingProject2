@@ -36,6 +36,8 @@ export class PhotosComponent implements OnInit {
     this._httpClient.get(url)
       .subscribe((res: any) => {
         this.items = res.data;
+        this.items.unshift({});
+        this.items.push({});
         this.isLoading = false;
       }, error => {
           this.isLoading = false;
@@ -108,10 +110,16 @@ export class PhotosComponent implements OnInit {
   }
 
   onRightArrow() {
-    document.getElementById("slider").scrollLeft += 1000;
+    document.getElementById("slider").scroll({
+      left: document.getElementById("slider").scrollLeft + 1075,
+      behavior: "smooth"
+    });
   }
 
   onLeftArrow() {
-    document.getElementById("slider").scrollLeft -= 1000; 
+    document.getElementById("slider").scroll({
+      left: document.getElementById("slider").scrollLeft - 1075,
+      behavior: "smooth"
+    });
   }
 }
