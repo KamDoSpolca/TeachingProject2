@@ -3,13 +3,53 @@
   top: 1rem;
   right: 2rem;
   font-size: 12px;
-  font-family: 'CormorantGaramond-Medium'; //elli tuto nemusi byt bodkociarka
+  font-family: 'CormorantGaramond-Medium';
+  display:none;
+  cursor:pointer;
 }
+
 
 .photo--info {
   position: absolute;
   top: 1rem;
   left: 2rem;
   font-size: 12px;
-  font-family: 'CormorantGaramond-Medium' //elli tuto moze byt bodkociarka
+  font-family: 'CormorantGaramond-Medium';
+  display:none;
+
 }
+.slider {
+  text-align: center;
+  position: relative;
+  width: 180%;
+  left: -55%;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex
+}
+
+.image {
+  width: 100%;
+  object-fit: cover
+}
+
+.slide {
+  background-color: grey;
+  width: 65rem;
+  height: 30rem;
+  flex-shrink: 0;
+  margin-right: 2rem;
+  position: relative
+
+}
+
+.slide:hover {
+    .photo--options,.photo--info {
+        display:block;
+
+    }
+
+}
+

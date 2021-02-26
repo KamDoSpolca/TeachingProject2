@@ -2,10 +2,10 @@
 <div>.</div>
 <div style="text-align:center;font-size:20px; font-weight:bold; margin:4rem;">Photos</div>
 
-<div class="slider" id="slider" style="text-align:center; position:relative; width:100%; left:12%; overflow:hidden">
-  <div class="slides" style="display:flex">
-    <div *ngFor="let item of items" style="background-color:grey; width:65rem; height:30rem; flex-shrink:0; margin-right:2rem; position:relative ">
-      <img style="width:100%; object-fit:cover" [src]="item.url" onerror="this.onerror = null;this.src = 'https://thumbs.static-thomann.de/thumb/thumb250x220/pics/prod/174723.jpg'" />
+<div class="slider" id="slider">
+  <div class="slides" >
+    <div class="slide" *ngFor="let item of items">
+      <img class="image"[src]="item.url" onerror="this.onerror = null;this.src = 'https://thumbs.static-thomann.de/thumb/thumb250x220/pics/prod/174723.jpg'" />
       <div class=" photo--info">
         <div>{{item.title}}</div>
         <div>{{item._id}}</div>
