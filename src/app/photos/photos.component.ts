@@ -122,4 +122,16 @@ export class PhotosComponent implements OnInit {
       behavior: "smooth"
     });
   }
+
+  onDeleteButton() {
+    alert("Zmazané")
+  }
+
+  onEditButton() {
+    alert("Upraviť")
+  }
+
+  onCloseButton() {
+    alert("Zatvoriť")
+  }
 }
