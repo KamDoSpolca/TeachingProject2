@@ -5,6 +5,33 @@
 <div class="slider" id="slider">
   <div class="slides" >
     <div class="slide" *ngFor="let item of items">
+
+      <div class="edit--form" *ngIf="isEditMode">
+        <!--Form-->
+        <div class="row col-sm-12" style="margin-left:2rem;margin-bottom:2rem;">
+
+
+
+          <form [formGroup]="testForm">
+            <p>
+              {{helpfulEditId}}
+            </p>
+            <label>Title</label>
+            <input class="form-control" formControlName="title" />
+
+            <label>Photo Url</label>
+            <input class="form-control" formControlName="url" style="width:40rem" />
+
+            <button *ngIf="!isUpdate" type="submit" (click)="onSubmit()"> Create </button>
+
+            <button *ngIf="isUpdate" type="submit" (click)="onUpdate(helpfulEditId)"> Update </button>
+
+            <button *ngIf="isUpdate" (click)="onCancel()"> X </button>
+
+          </form>
+        </div>
+      </div>
+
       <img class="image"[src]="item.url" onerror="this.onerror = null;this.src = 'https://thumbs.static-thomann.de/thumb/thumb250x220/pics/prod/174723.jpg'" />
       <div class=" photo--info">
         <div>{{item.title}}</div>
@@ -13,7 +40,7 @@
       <div class="photo--options">
         <!--edit-->
 
-        <svg style="margin-right: 1.5rem" class="svg" (click)="onEditButton()" height="20" x="0px" y="0px"
+        <svg style="margin-right: 1.5rem" class="svg" (click)="onEdit(item)" height="20" x="0px" y="0px"
              viewBox="0 0 477.873 477.873" xml:space="preserve">
         <path d="M392.533,238.937c-9.426,0-17.067,7.641-17.067,17.067V426.67c0,9.426-7.641,17.067-17.067,17.067H51.2
 			c-9.426,0-17.067-7.641-17.067-17.067V85.337c0-9.426,7.641-17.067,17.067-17.067H256c9.426,0,17.067-7.641,17.067-17.067
@@ -33,7 +60,7 @@
 
 
         <!--delete-->
-        <svg style="margin-right: 1.5rem" class="svg" (click)="onDeleteButton()"enable-background="new 0 0 512 512" height="20" viewBox="0 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg
+        <svg style="margin-right: 1.5rem" class="svg" (click)="onDelete(item._id)"enable-background="new 0 0 512 512" height="20" viewBox="0 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg
 ">
         <g><path d="m424 64h-88v-16c0-26.467-21.533-48-48-48h-64c-26.467 0-48 21.533-48 48v16h-88c-22.056 0-40 17.944-40 40v56c0 8.836 7.164 16 16 16h8.744l13.823 290.283c1.221 25.636 22.281 45.717 47.945 45.717h242.976c25.665 0 46.725-20.081 47.945-45.717l13.823-290.283h8.744c8.836 0 16-7.164 16-16v-56c0-22.056-17.944-40-40-40zm-216-16c0-8.822 7.178-16 16-16h64c8.822 0 16 7.178 16 16v16h-96zm-128 56c0-4.411 3.589-8 8-8h336c4.411 0 8 3.589 8 8v40c-4.931 0-331.567 0-352 0zm313.469 360.761c-.407 8.545-7.427 15.239-15.981 15.239h-242.976c-8.555 0-15.575-6.694-15.981-15.239l-13.751-288.761h302.44z" /><path d="m256 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" /><path d="m336 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" /><path d="m176 448c8.836 0 16-7.164 16-16v-208c0-8.836-7.164-16-16-16s-16 7.164-16 16v208c0 8.836 7.163 16 16 16z" /></g></svg>
 
@@ -51,11 +78,13 @@
   <div class="col-sm-5">
   </div>
 
-  <div class="col-sm-1" (click)="onLeftArrow()">
+  <div class="col-sm-1 mouse--pointer" (click)="onLeftArrow()">
     < -   Klikaj
+    
+    
   </div>
 
-  <div class="col-sm-1" (click)="onRightArrow()">
+  <div class="col-sm-1 mouse--pointer" (click)="onRightArrow()">
     Pomaly - > 
   </div>
 </div>
@@ -69,29 +98,7 @@
 
 
 
-<!--Form-->
-<div class="row col-sm-12" style="margin-left:2rem;margin-bottom:2rem;">
 
-
-
-  <form [formGroup]="testForm">
-    <p>
-      {{helpfulEditId}}
-    </p>
-    <label>Title</label>
-    <input class="form-control" formControlName="title" />
-
-    <label>Photo Url</label>
-    <input class="form-control" formControlName="url" style="width:40rem" />
-
-    <button *ngIf="!isUpdate" type="submit" (click)="onSubmit()"> Create </button>
-
-    <button *ngIf="isUpdate" type="submit" (click)="onUpdate(helpfulEditId)"> Update </button>
-
-    <button *ngIf="isUpdate" (click)="onCancel()"> X </button>
-
-  </form>
-</div>
 
 
 <!--ToDo: Pridat kategorie + funkcia zoradovanie podla kategorii (iba zeby ste mali lepsi napad) -->

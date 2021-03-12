@@ -17,6 +17,7 @@ export class PhotosComponent implements OnInit {
   helpfulEditId = '';
   testForm: FormGroup;
   isError = false;
+  isEditMode = false;
 
   constructor(
     private _httpClient: HttpClient,
@@ -64,6 +65,7 @@ export class PhotosComponent implements OnInit {
       subscribe((res: any) => {
         alert(res.message);
         this.onCancel();
+        this.isEditMode = false;
       });
   }
 
@@ -79,6 +81,7 @@ export class PhotosComponent implements OnInit {
 
     this.isUpdate = false;
     this.initForm();
+    this.isEditMode = false;
 
   }
 
@@ -105,7 +108,7 @@ export class PhotosComponent implements OnInit {
     this.testForm.get('url').setValue(item.url);
     this.isUpdate = true;
     this.helpfulEditId = item._id;
-    window.scroll(0,0)
+    this.isEditMode = true;
 
   }
 
@@ -114,6 +117,7 @@ export class PhotosComponent implements OnInit {
       left: document.getElementById("slider").scrollLeft + 1075,
       behavior: "smooth"
     });
+    this.isEditMode = false; 
   }
 
   onLeftArrow() {
@@ -121,12 +125,10 @@ export class PhotosComponent implements OnInit {
       left: document.getElementById("slider").scrollLeft - 1075,
       behavior: "smooth"
     });
+    this.isEditMode = false;
   }
 
-  onDeleteButton() {
-    alert("Zmazané")
-  }
-
+ 
   onEditButton() {
     alert("Upraviť")
   }
