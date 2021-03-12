@@ -41,8 +41,8 @@ export class PhotosComponent implements OnInit {
         this.items.push({});
         this.isLoading = false;
       }, error => {
-          this.isLoading = false;
-          this.isError = true;
+        this.isLoading = false;
+        this.isError = true;
       })
   }
 
@@ -71,10 +71,14 @@ export class PhotosComponent implements OnInit {
 
   onDelete(id) {
     let url = 'http://localhost:1234/photos/delete-one/' + id;
-        this._httpClient.delete(url).
+    let confirmation = confirm("Ši normalny?");
+
+    if(confirmation){
+      this._httpClient.delete(url).
       subscribe((res: any) => {
         alert(res.message)
       });
+    }
   }
 
   onCancel() {
@@ -85,7 +89,7 @@ export class PhotosComponent implements OnInit {
 
   }
 
-  
+
 
   onSubmit() {
 
@@ -117,7 +121,7 @@ export class PhotosComponent implements OnInit {
       left: document.getElementById("slider").scrollLeft + 1075,
       behavior: "smooth"
     });
-    this.isEditMode = false; 
+    this.isEditMode = false;
   }
 
   onLeftArrow() {
@@ -128,7 +132,7 @@ export class PhotosComponent implements OnInit {
     this.isEditMode = false;
   }
 
- 
+
   onEditButton() {
     alert("Upraviť")
   }
