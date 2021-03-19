@@ -26,7 +26,8 @@
             <input class="form-control" formControlName="weight" />
 
             <label>kuch_na</label>
-            <select class="form-control">
+            <select class="form-control" formControlName="kitchen" >
+
               <option *ngFor="let kitchen of kitchenType">
                 {{kitchen}}
               </option>
@@ -47,6 +48,9 @@
         <div>{{item.title}}</div>
         <div>{{item._id}}</div>
         <div>{{item.weight}}</div>
+        <div>{{item.kitchen}}</div>
+
+
       </div>
       <div class="photo--options">
         <!--edit-->

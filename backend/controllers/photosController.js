@@ -33,7 +33,8 @@ exports.savePhoto = (req, res, next) => {
   const fotecka = new Photo({
     title: req.body.photoTitle,
     url: req.body.photoUrl,
-    weight: req.body.photoWeight
+    weight: req.body.photoWeight,
+    kitchen: req.body.photoKitchen
   });
   console.log("sluchatka")
   fotecka.save().then(response => {
@@ -54,13 +55,15 @@ exports.updatePhoto = (req, res, next) => {
   const updateTitle = req.body.photoTitle;
   const updateUrl = req.body.photoUrl;
   const updateWeight = req.body.photoWeight;
+  const updateKitchen = req.body.photoKitchen;
   
 
   const fotecka = new Photo({
     _id: updateId,
     title: updateTitle,
     url: updateUrl,
-    weight : updateWeight
+    weight: updateWeight,
+    kitchen: updateKitchen
   });
 
   Photo.updateOne({ _id: updateId }, fotecka)

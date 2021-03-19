@@ -52,7 +52,8 @@ export class PhotosComponent implements OnInit {
     this.testForm = this._formBuilder.group({
       title: new FormControl(null),
       url: new FormControl(null),
-      weight: new FormControl(null)
+      weight: new FormControl(null),
+      kitchen: new FormControl(null)
     })
 
   }
@@ -62,9 +63,10 @@ export class PhotosComponent implements OnInit {
     const photoTitle = this.testForm.value.title;
     const photoUrl = this.testForm.value.url;
     const photoWeight = this.testForm.value.weight;
+    const photoKitchen = this.testForm.value.kitchen;
 
     let url = `http://localhost:1234/photos/update-one/${id}`;
-    this._httpClient.put(url, { photoUrl, photoTitle, photoWeight }).
+    this._httpClient.put(url, { photoUrl, photoTitle, photoWeight, photoKitchen }).
       subscribe((res: any) => {
         alert(res.message);
         this.onCancel();
@@ -101,11 +103,13 @@ export class PhotosComponent implements OnInit {
     const photoTitle = this.testForm.value.title;
     const photoUrl = this.testForm.value.url;
     const photoWeight = this.testForm.value.weight;
+    const photoKitchen = this.testForm.value.kitchen;
+
 
 
 
     let url = 'http://localhost:1234/photos/save-one';
-    this._httpClient.post(url, { photoUrl, photoTitle, photoWeight }).
+    this._httpClient.post(url, { photoUrl, photoTitle, photoWeight, photoKitchen}).
       subscribe((res: any) => {
         alert(res.message);
         this.isEditMode = false;
@@ -117,6 +121,7 @@ export class PhotosComponent implements OnInit {
     this.testForm.get('title').setValue(item.title);
     this.testForm.get('url').setValue(item.url);
     this.testForm.get('weight').setValue(item.weight);
+    this.testForm.get('kitchen').setValue(item.kitchen);
     this.isUpdate = true;
     this.helpfulEditId = item._id;
     this.isEditMode = true;
