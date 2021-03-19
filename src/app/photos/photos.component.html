@@ -25,6 +25,13 @@
             <label>weight</label>
             <input class="form-control" formControlName="weight" />
 
+            <label>kuch_na</label>
+            <select class="form-control">
+              <option *ngFor="let kitchen of kitchenType">
+                {{kitchen}}
+              </option>
+            </select>
+
             <button *ngIf="!isUpdate" type="submit" (click)="onSubmit()"> Create </button>
 
             <button *ngIf="isUpdate" type="submit" (click)="onUpdate(helpfulEditId)"> Update </button>

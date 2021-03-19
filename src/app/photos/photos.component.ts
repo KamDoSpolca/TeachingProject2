@@ -18,6 +18,7 @@ export class PhotosComponent implements OnInit {
   testForm: FormGroup;
   isError = false;
   isEditMode = false;
+  kitchenType = ["SAE", "India", "Finsko", "Laponsko" ];
 
   constructor(
     private _httpClient: HttpClient,
