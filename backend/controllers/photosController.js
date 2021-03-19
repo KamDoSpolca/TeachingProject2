@@ -32,7 +32,8 @@ exports.savePhoto = (req, res, next) => {
 
   const fotecka = new Photo({
     title: req.body.photoTitle,
-    url: req.body.photoUrl
+    url: req.body.photoUrl,
+    weight: req.body.photoWeight
   });
   console.log("sluchatka")
   fotecka.save().then(response => {
@@ -52,12 +53,14 @@ exports.updatePhoto = (req, res, next) => {
   const updateId = req.params.id;
   const updateTitle = req.body.photoTitle;
   const updateUrl = req.body.photoUrl;
+  const updateWeight = req.body.photoWeight;
   
 
   const fotecka = new Photo({
     _id: updateId,
     title: updateTitle,
-    url: updateUrl
+    url: updateUrl,
+    weight : updateWeight
   });
 
   Photo.updateOne({ _id: updateId }, fotecka)

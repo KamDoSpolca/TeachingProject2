@@ -22,6 +22,9 @@
             <label>Photo Url</label>
             <input class="form-control" formControlName="url" style="width:40rem" />
 
+            <label>weight</label>
+            <input class="form-control" formControlName="weight" />
+
             <button *ngIf="!isUpdate" type="submit" (click)="onSubmit()"> Create </button>
 
             <button *ngIf="isUpdate" type="submit" (click)="onUpdate(helpfulEditId)"> Update </button>
@@ -36,6 +39,7 @@
       <div class=" photo--info">
         <div>{{item.title}}</div>
         <div>{{item._id}}</div>
+        <div>{{item.weight}}</div>
       </div>
       <div class="photo--options">
         <!--edit-->
