@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 
-const port = 1234;
+const port = process.env.PORT || 1234;
 const mongoose = require('mongoose');
 const photosRouter = require('./routes/photosRouter');
 // connection string password is found elsewhere ( and is fake to prevent anyone to connect to my DB )

@@ -1,0 +1,14 @@
+{
+  "name": "photography-app",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.5",
+    "nodemon": "^2.0.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  }
+  
+}
