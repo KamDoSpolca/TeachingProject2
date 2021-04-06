@@ -32,6 +32,7 @@ exports.savePhoto = (req, res, next) => {
 
   const fotecka = new Photo({
     title: req.body.photoTitle,
+    restaurant: req.body.restaurant,
     url: req.body.photoUrl,
     weight: req.body.photoWeight,
     kitchen: req.body.photoKitchen
@@ -52,6 +53,7 @@ exports.savePhoto = (req, res, next) => {
 exports.updatePhoto = (req, res, next) => {
   // Put here your own database item ID
   const updateId = req.params.id;
+  const updateRestaurant = req.body.restaurant;
   const updateTitle = req.body.photoTitle;
   const updateUrl = req.body.photoUrl;
   const updateWeight = req.body.photoWeight;
@@ -61,6 +63,7 @@ exports.updatePhoto = (req, res, next) => {
   const fotecka = new Photo({
     _id: updateId,
     title: updateTitle,
+    restaurant: updateRestaurant,
     url: updateUrl,
     weight: updateWeight,
     kitchen: updateKitchen

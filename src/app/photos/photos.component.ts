@@ -18,7 +18,7 @@ export class PhotosComponent implements OnInit {
   testForm: FormGroup;
   isError = false;
   isEditMode = false;
-  kitchenType = ["SAE", "India", "Finsko", "Laponsko" ];
+  kitchenType = ["SAE", "India", "Finsko", "Laponsko"];
 
   constructor(
     private _httpClient: HttpClient,
@@ -51,6 +51,7 @@ export class PhotosComponent implements OnInit {
 
     this.testForm = this._formBuilder.group({
       title: new FormControl(null),
+      restaurant: new FormControl(null),
       url: new FormControl(null),
       weight: new FormControl(null),
       kitchen: new FormControl(null)
@@ -60,13 +61,9 @@ export class PhotosComponent implements OnInit {
 
   onUpdate(id) {
 
-    const photoTitle = this.testForm.value.title;
-    const photoUrl = this.testForm.value.url;
-    const photoWeight = this.testForm.value.weight;
-    const photoKitchen = this.testForm.value.kitchen;
-
+    let item = this.createItemObject();
     let url = `http://localhost:1234/photos/update-one/${id}`;
-    this._httpClient.put(url, { photoUrl, photoTitle, photoWeight, photoKitchen }).
+    this._httpClient.put(url, item).
       subscribe((res: any) => {
         alert(res.message);
         this.onCancel();
@@ -78,11 +75,11 @@ export class PhotosComponent implements OnInit {
     let url = 'http://localhost:1234/photos/delete-one/' + id;
     let confirmation = confirm("Ši normalny?");
 
-    if(confirmation){
+    if (confirmation) {
       this._httpClient.delete(url).
-      subscribe((res: any) => {
-        alert(res.message)
-      });
+        subscribe((res: any) => {
+          alert(res.message)
+        });
     }
   }
 
@@ -96,20 +93,20 @@ export class PhotosComponent implements OnInit {
   }
 
 
-
-  onSubmit() {
-
-
+  createItemObject() {
     const photoTitle = this.testForm.value.title;
+    const restaurant = this.testForm.value.restaurant;
     const photoUrl = this.testForm.value.url;
     const photoWeight = this.testForm.value.weight;
     const photoKitchen = this.testForm.value.kitchen;
+    return { photoUrl, restaurant, photoTitle, photoWeight, photoKitchen }
+  }
 
+  onSubmit() {
 
-
-
+    let item = this.createItemObject();
     let url = 'http://localhost:1234/photos/save-one';
-    this._httpClient.post(url, { photoUrl, photoTitle, photoWeight, photoKitchen}).
+    this._httpClient.post(url, item).
       subscribe((res: any) => {
         alert(res.message);
         this.isEditMode = false;
@@ -119,6 +116,7 @@ export class PhotosComponent implements OnInit {
 
   onEdit(item) {
     this.testForm.get('title').setValue(item.title);
+    this.testForm.get('restaurant').setValue(item.restaurant);
     this.testForm.get('url').setValue(item.url);
     this.testForm.get('weight').setValue(item.weight);
     this.testForm.get('kitchen').setValue(item.kitchen);

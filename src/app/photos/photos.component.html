@@ -19,6 +19,9 @@
             <label>Title</label>
             <input class="form-control" formControlName="title" />
 
+            <label>Restaurant</label>
+            <input class="form-control" formControlName="restaurant" />
+
             <label>Photo Url</label>
             <input class="form-control" formControlName="url" style="width:40rem" />
 
@@ -26,7 +29,7 @@
             <input class="form-control" formControlName="weight" />
 
             <label>kuch_na</label>
-            <select class="form-control" formControlName="kitchen" >
+            <select class="form-control" formControlName="kitchen">
 
               <option *ngFor="let kitchen of kitchenType">
                 {{kitchen}}
@@ -49,6 +52,8 @@
         <div>{{item._id}}</div>
         <div>{{item.weight}}</div>
         <div>{{item.kitchen}}</div>
+        <div>{{item.restaurant}}</div>
+
 
 
       </div>

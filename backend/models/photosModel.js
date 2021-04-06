@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const photoSchema = mongoose.Schema({
   title: { type: String },
+  restaurant: { type: String },
   url: { type: String },
   weight: { type: String },
   kitchen: { type: String }
