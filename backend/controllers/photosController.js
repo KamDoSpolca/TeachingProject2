@@ -72,7 +72,8 @@ exports.updatePhoto = (req, res, next) => {
   Photo.updateOne({ _id: updateId }, fotecka)
     .then(response => {
       res.status(200).json({
-        message: 'updated successfully'
+        message: 'updated successfully',
+        item: fotecka
       });
     })
     .catch(error => {

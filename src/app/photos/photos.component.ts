@@ -66,6 +66,16 @@ export class PhotosComponent implements OnInit {
     this._httpClient.put(url, item).
       subscribe((res: any) => {
         alert(res.message);
+        let id = res.item._id;
+        this.items.filter(bla => bla._id === id).forEach(najdenyItem =>najdenyItem = res.item)
+        
+
+
+
+
+
+
+
         this.onCancel();
         this.isEditMode = false;
       });
